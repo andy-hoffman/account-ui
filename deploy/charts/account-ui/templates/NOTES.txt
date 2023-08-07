@@ -1,0 +1,35 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  annotations:
+    app.kubernetes.io/component: dashboards
+  labels:
+    app: dashboards
+  name: dashboards-vs
+  namespace: pallet-operator-system
+spec:
+  gateways:
+  - istio-system/main-app-gateway
+  hosts:
+  - dashboards.circonus-np.app
+  http:
+
+  - route:
+    - destination:
+        host: dash-0.pallet-operator-system.svc.cluster.local
+        port:
+          number: 5601
+    corsPolicy:
+      allowOrigins:
+      - exact: 'circonus-non-prod-kd4bcw.zitadel.cloud'
+      allowMethods:
+      - POST
+      - GET
+      - OPTIONS
+      - PUT
+      - DELETE
+      allowCredentials: true
+      allowHeaders:
+      - Authorization
+      maxAge: "24h"

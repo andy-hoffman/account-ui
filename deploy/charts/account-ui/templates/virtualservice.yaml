@@ -1,0 +1,35 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  annotations:
+    app.kubernetes.io/component: account-ui
+  labels:
+    app: account-ui
+  name: account-ui-vs
+  namespace: account
+spec:
+  gateways:
+  - istio-system/main-app-gateway
+  hosts:
+  - signup.circonus-np.app
+  http:
+
+  - route:
+    - destination:
+        host: account-ui.account.svc.cluster.local
+        port:
+          number: 80
+    corsPolicy:
+      allowOrigins:
+      - exact: 'circonus-non-prod-kd4bcw.zitadel.cloud'
+      allowMethods:
+      - POST
+      - GET
+      - OPTIONS
+      - PUT
+      - DELETE
+      allowCredentials: true
+      allowHeaders:
+      - Authorization
+      maxAge: "24h"

@@ -1,0 +1,5 @@
+version:
+  apiVersion: "v1"
+  serviceVersion: "0.1.5"
+service:
+  name: "account-ui"

@@ -17,7 +17,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
 
 
   const acct = new Account({
-    name: slug,
+    name: name,
     email: email,
     adminFirstName: firstName,
     adminLastName: lastName,

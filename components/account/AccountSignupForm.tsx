@@ -40,10 +40,11 @@ const AccountSignupForm = () => {
     <label className="block">
     <input
       type="text"
-      name = "slug"
+      name = "name"
       multiple
       className="form-input mt-full h-12 w-full border-2 px-3"
-      placeholder="Instance Name (e.g. circ1)"
+      placeholder="Account Name - (e.g. circ1)"
+      pattern="[a-zA-Z0-9\-]{4,12}"
     />
     </label>
     </div>

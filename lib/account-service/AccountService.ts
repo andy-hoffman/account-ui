@@ -38,7 +38,7 @@ export const AccountService = () => {
       const message = HTTP.binary(ce); // Or HTTP.structured(ce)
       axios.request({
         method: "POST",
-        url: "http://localhost:8200",
+        url: "http://account-domain-handler-service.account.svc.cluster.local",
         data: message.body,
         headers: message.headers,
       }).then((response: any) => {

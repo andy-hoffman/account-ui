@@ -20,9 +20,10 @@ const AccountSignup = () => {
     const data = {
       firstName: event.target.firstName.value,
       lastName: event.target.lastName.value,
+      name: event.target.name.value,
       email: event.target.email.value,
       domain: event.target.domain.value,
-      slug: event.target.slug.value,
+      slug: event.target.name.value,
     }
     
     event.preventDefault()
